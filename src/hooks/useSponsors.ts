@@ -4,9 +4,7 @@ import type { Sponsor } from "../types/Sponsor";
 
 export function useSponsors() {
     const [sponsors, setSponsor] = useState<Sponsor[]>([]);
-
-    const [loading, setLoading] =
-        useState(true);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getSponsors()

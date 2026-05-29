@@ -4,9 +4,7 @@ type HeroProps = {
     festival: Festival;
 };
 
-export default function Hero({
-    festival,
-}: HeroProps) {
+export default function Hero({ festival }: HeroProps) {
     return (
         <section>
             <h1>

@@ -4,9 +4,7 @@ type SponsorsProps = {
     sponsors: Sponsor[];
 };
 
-export default function Sponsors({
-    sponsors,
-}: SponsorsProps) {
+export default function Sponsors({ sponsors }: SponsorsProps) {
     return (
         <section>
             <h2>Sponsorzy</h2>

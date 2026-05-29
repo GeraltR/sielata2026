@@ -4,9 +4,7 @@ type HeroTopicsProps = {
     topics: FestivalTopic[];
 };
 
-export default function HeroTopics({
-    topics,
-}: HeroTopicsProps) {
+export default function HeroTopics({ topics }: HeroTopicsProps) {
     return (
         <div>
             {topics.map((topic) => (

@@ -9,14 +9,9 @@ import { useSponsors } from "../hooks/useSponsors";
 
 
 export default function HomePage() {
-    const { festival, loading } =
-        useFestival();
-
-    const { topics } =
-        useTopics();
-
-    const { sponsors } =
-        useSponsors();
+    const { festival, loading } = useFestival();
+    const { topics } = useTopics();
+    const { sponsors } = useSponsors();
 
     if (loading || !festival) {
         return <div>Ładowanie...</div>;

@@ -4,9 +4,7 @@ import type { FestivalTopic } from "../types/FestivalTopic";
 
 export function useTopics() {
     const [topics, setTopics] = useState<FestivalTopic[]>([]);
-
-    const [loading, setLoading] =
-        useState(true);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getCurrentTopics()
