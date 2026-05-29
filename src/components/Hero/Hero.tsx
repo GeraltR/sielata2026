@@ -1,24 +1,20 @@
+import type { Festival } from "../../types/Festival";
+
 type HeroProps = {
-    edition: string;
-    title: string;
-    city: string;
-    year: number;
+    festival: Festival;
 };
 
 export default function Hero({
-    edition,
-    title,
-    city,
-    year,
+    festival,
 }: HeroProps) {
     return (
         <section>
             <h1>
-                {edition} {title}
+                {festival.edition} {festival.title}
             </h1>
 
-            <p>{city}</p>
-            <p>{year}</p>
+            <p>{festival.city}</p>
+            <p>{festival.year}</p>
         </section>
     );
 }
