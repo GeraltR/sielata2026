@@ -1,5 +1,6 @@
 import type { Festival } from "../../types/Festival";
 import type { FestivalTopic } from "../../types/FestivalTopic";
+import { formatDate } from "../../utils/date";
 
 type HeroProps = {
     festival: Festival;
@@ -15,6 +16,11 @@ export default function Hero({ festival }: HeroProps) {
 
             <p>{festival.city}</p>
             <p>{festival.year}</p>
+            <p>
+                {`${formatDate(festival.festival_start, "pl-PL", {day:"numeric"})} 
+                  - 
+                ${formatDate(festival.festival_end, "pl-PL", {day: "numeric", month:"long", year:"numeric"})}`}
+            </p>
         </section>
     );
 }
