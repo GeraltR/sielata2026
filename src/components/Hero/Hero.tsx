@@ -17,9 +17,9 @@ export default function Hero({ festival }: HeroProps) {
             <p>{festival.city}</p>
             <p>{festival.year}</p>
             <p>
-                {`${formatDate(festival.festival_start, "pl-PL", {day:"numeric"})} 
+                {`${formatDate(festival.festival_start, {day:"numeric"})} 
                   - 
-                ${formatDate(festival.festival_end, "pl-PL", {day: "numeric", month:"long", year:"numeric"})}`}
+                ${formatDate(festival.festival_end, {day: "numeric", month:"long", year:"numeric"})}`}
             </p>
         </section>
     );
