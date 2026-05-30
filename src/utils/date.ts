@@ -10,3 +10,15 @@ export function formatDate(
 ): string {
     return new Intl.DateTimeFormat(locale, options).format(new Date(date));
 }
+
+export function formatDateRange(startDate: string, endDate: string): string {
+    return (
+        `${formatDate(startDate, { day: "numeric" })}` +
+        ` - ` +
+        `${formatDate(endDate, {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+        })}`
+    );
+}

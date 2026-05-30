@@ -24,3 +24,16 @@ dist-ssr
 *.sw?
 .env.development
 .env.production
+src/assets/sielata_ico.png
+src/assets/sielata_logo_53.gif
+src/assets/sielata_logo_53w.gif
+.gitignore
+.gitignore
+.gitignore
+src/assets/sielata_logo_druk_new_bw.gif
+src/assets/sielata_logo_new_w.gif
+src/assets/fonts/Campton-Bold.otf
+src/assets/fonts/Lato-Bold.ttf
+.gitignore
+.gitignore
+src/assets/fonts/Lato-Light.ttf

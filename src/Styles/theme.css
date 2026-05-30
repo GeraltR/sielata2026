@@ -1,0 +1,74 @@
+@font-face {
+    font-family: "Campton";
+    src: url("../assets/fonts/Campton-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lato";
+    src: url("../assets/fonts/Lato-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lato";
+    src: url("../assets/fonts/Lato-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+:root {
+    /* Fonty */
+    --font-heading: "Campton", sans-serif;
+    --font-body: "Lato", sans-serif;
+
+    /* Tła */
+    --color-background: #FFDABB;
+    --color-surface: #ffffff;
+
+    /* Granaty */
+    --color-navy-light: #1B3A6B;
+    --color-navy-dark: #0d2448;
+
+    /* Pomarańcze */
+    --color-accent: #FF8000;
+    --color-accent-light: #FFDABB;
+    
+    /* Teksty */
+    --color-text: #222222;
+    --color-text-muted: #6b7280;
+    --color-text-inverse: #ffffff;
+
+    /* Obramowania */
+    --color-border: #d8dde5;
+
+    --color-link: #666666;
+
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+
+    --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+.heading {
+    font-family: var(--font-heading);
+}
+
+.text-light {
+    font-family: var(--font-body);
+    font-weight: 300;
+}
+
+.text-bold {
+    font-family: var(--font-body);
+    font-weight: 700;
+}
