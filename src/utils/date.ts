@@ -1,4 +1,4 @@
-
+//This place for the future locale will be inserted from the global web browser parameter
 export function formatDate(
     date: string | Date, 
     options: Intl.DateTimeFormatOptions = {
