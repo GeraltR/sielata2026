@@ -3,4 +3,6 @@ export interface Sponsor {
     name: string;
     logo: string | null;
     url: string | null;
+    category: 'gold' | 'silver' | 'partner' | 'media';
+    order: number;
 }

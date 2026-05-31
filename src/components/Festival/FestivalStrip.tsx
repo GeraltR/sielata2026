@@ -5,9 +5,7 @@ type FestivalStripProps = {
     festival: Festival;
 };
 
-export default function FestivalStrip({
-    festival,
-}: FestivalStripProps) {
+export default function FestivalStrip({festival}: FestivalStripProps) {
     return (
         <section className="bg-slate-950 text-white">
             <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">

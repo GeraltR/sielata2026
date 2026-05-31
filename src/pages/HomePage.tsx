@@ -4,7 +4,7 @@ import Sponsors from "../components/Sponsors/Sponsors";
 import { useFestival } from "../hooks/useFestival";
 import { useTopics } from "../hooks/useTopics";
 import { useSponsors } from "../hooks/useSponsors";
-import MainLayout from "../layouts/HomePage";
+import MainLayout from "../layouts/MainLayout";
 import HeroSponsorsMarquee from "../components/Hero/HeroSponsorsMarquee";
 import FestivalStrip from "../components/Festival/FestivalStrip";
 import QuickBar from "../components/Home/QuicBar";
@@ -14,7 +14,7 @@ export default function HomePage() {
   const { topics, loading: topicsLoading } = useTopics();
   const { sponsors, loading: sponsorsLoading } = useSponsors();
 
-  if (festivalLoading || topicsLoading || sponsorsLoading) {
+  if (festivalLoading || topicsLoading) {
     return <div>Ładowanie...</div>;
   }
 
@@ -30,7 +30,7 @@ export default function HomePage() {
 
       <FestivalStrip festival={festival} />
 
-      <QuickBar />
+      <QuickBar festival={festival} />
 
       <Sponsors sponsors={sponsors} />
     </MainLayout>

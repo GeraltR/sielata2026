@@ -1,28 +1,36 @@
 import type { Sponsor } from "../../types/Sponsor";
 
-type HeroSponsorsMarqueeProps = {
-  sponsors: Sponsor[];
-};
+type Props = { sponsors: Sponsor[] };
 
-export default function HeroSponsorsMarquee({
-  sponsors,
-}: HeroSponsorsMarqueeProps) {
-  const marqueeSponsors = [...sponsors, ...sponsors];
+export default function HeroSponsorsMarquee({ sponsors }: Props) {
+  const withLogos = sponsors.filter((s) => s.logo);
+
+  const doubled = [...withLogos, ...withLogos];
+
   return (
-    <section className="bg-white py-4 overflow-hidden">
-      <div className="marquee-track">
-        {marqueeSponsors.map((sponsor, index) =>
-          sponsor.logo ? (
-            <a href={sponsor.url ?? "#"} target="_blank" rel="noreferrer">
+    <section className="bg-background py-6 overflow-hidden border-y border-border">
+      <p className="text-center text-xs font-bold uppercase tracking-widest text-ink-muted mb-4">
+        Patroni i Sponsorzy Festiwalu
+      </p>
+      <div className="flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        <div className="marquee-track">
+          {doubled.map((sponsor, index) => (
+            <a
+              key={`${sponsor.id}-${index}`}
+              href={sponsor.url ?? "#"}
+              target="_blank"
+              rel="noreferrer"
+              title={sponsor.name}
+              className="shrink-0 flex items-center justify-center w-32 h-16 bg-surface border border-border rounded-xl px-4 hover:border-accent transition-colors"
+            >
               <img
-                key={`${sponsor.id}-${index}`}
-                src={sponsor.logo}
+                src={sponsor.logo!}
                 alt={sponsor.name}
-                className="h-12 w-auto object-contain shrink-0"
+                className="max-h-10 w-auto object-contain"
               />
             </a>
-          ) : null,
-        )}
+          ))}
+        </div>
       </div>
     </section>
   );

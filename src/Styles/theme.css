@@ -1,74 +1,47 @@
+/* @font-face zostaje poza @theme — to nie jest token */
 @font-face {
     font-family: "Campton";
     src: url("../assets/fonts/Campton-Bold.otf") format("opentype");
     font-weight: 700;
-    font-style: normal;
 }
-
 @font-face {
     font-family: "Lato";
     src: url("../assets/fonts/Lato-Light.ttf") format("truetype");
     font-weight: 300;
-    font-style: normal;
 }
-
 @font-face {
     font-family: "Lato";
     src: url("../assets/fonts/Lato-Bold.ttf") format("truetype");
     font-weight: 700;
-    font-style: normal;
 }
 
-:root {
-    /* Fonty */
-    --font-heading: "Campton", sans-serif;
-    --font-body: "Lato", sans-serif;
+@theme {
+    --color-background:   #FFDABB;
+    --color-surface:      #ffffff;
 
-    /* Tła */
-    --color-background: #FFDABB;
-    --color-surface: #ffffff;
+    --color-navy:         #1B3A6B;
+    --color-navy-dark:    #0d2448;
+    --color-navy-light:   #EBF0F8;
 
-    /* Granaty */
-    --color-navy-light: #1B3A6B;
-    --color-navy-dark: #0d2448;
+    --color-accent:       #FF8000;
+    --color-accent-dark:  #CC6500;
+    --color-accent-light: #FFF4E8;
 
-    /* Pomarańcze */
-    --color-accent: #FF8000;
-    --color-accent-light: #FFDABB;
-    
-    /* Teksty */
-    --color-text: #222222;
-    --color-text-muted: #6b7280;
-    --color-text-inverse: #ffffff;
+    --color-ink:          #222222;
+    --color-ink-muted:    #6b7280;
+    --color-ink-inverse:  #ffffff;
 
-    /* Obramowania */
-    --color-border: #d8dde5;
+    --color-border:       #d8dde5;
+    --color-link:         #666666;
 
-    --color-link: #666666;
+    --font-heading:       "Campton", sans-serif;
+    --font-body:          "Lato", sans-serif;
 
-    --radius-sm: 8px;
-    --radius-md: 16px;
-    --radius-lg: 24px;
-
-    --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-card:        0 4px 12px rgba(0,0,0,0.08);
 }
 
 body {
     font-family: var(--font-body);
-    color: var(--color-text);
+    color: var(--color-ink);
     background-color: var(--color-background);
-}
-
-.heading {
-    font-family: var(--font-heading);
-}
-
-.text-light {
-    font-family: var(--font-body);
-    font-weight: 300;
-}
-
-.text-bold {
-    font-family: var(--font-body);
-    font-weight: 700;
 }

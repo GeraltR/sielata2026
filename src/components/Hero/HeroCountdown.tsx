@@ -3,10 +3,7 @@ type HeroCountdownProps = {
     label: string;
 };
 
-export default function HeroCountdown({
-    targetDate,
-    label,
-}: HeroCountdownProps) {
+export default function HeroCountdown({targetDate, label}: HeroCountdownProps) {
     const now = new Date();
     const target = new Date(targetDate);
 

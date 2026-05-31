@@ -1,22 +1,22 @@
 @import "tailwindcss";
 @import "./styles/theme.css";
 
+/* index.css */
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
+
 .marquee-track {
   display: flex;
   align-items: center;
   gap: 3rem;
+  flex-shrink: 0;
   width: max-content;
   animation: marquee 40s linear infinite;
+  will-change: transform;
 }
+
 .marquee-track:hover {
   animation-play-state: paused;
 }
