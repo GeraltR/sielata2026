@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { SITE_DESCRIPTION } from "../../config/site";
 import type { Festival } from "../../types/Festival";
 import type { FestivalTopic } from "../../types/FestivalTopic";
@@ -18,8 +19,10 @@ export default function Hero({ festival, topics }: HeroProps) {
             <Badge>SieLata · Jaworzno · od 2000</Badge>
 
             <h1 className="font-heading text-5xl lg:text-7xl text-ink leading-tight mt-5">
-              Lotnictwo,<br />
-              modelarstwo<br />
+              Lotnictwo,
+              <br />
+              modelarstwo
+              <br />
               <span className="text-accent">i wolność nieba</span>
             </h1>
 
@@ -28,23 +31,44 @@ export default function Hero({ festival, topics }: HeroProps) {
             </p>
           </div>
           <div className="space-y-3">
-            <div className="bg-navy rounded-2xl p-6">
-              <div className="flex items-baseline gap-3">
-                <span className="font-heading text-5xl text-accent">
-                  {festival.edition}
-                </span>
-                <span className="text-sm font-bold text-ink-inverse opacity-80 leading-tight">
-                  Festiwal<br />Modelarski
-                </span>
+            <NavLink to="/festiwal"
+              className="relative overflow-hidden bg-navy rounded-2xl p-6 block hover:bg-navy-dark transition-colors"
+            >
+              {/* Watermark */}
+              <span className="absolute right-4 top-1/2 -translate-y-1/2 font-heading text-9xl font-black text-white/5 select-none leading-none pointer-events-none">
+                {festival.edition}
+              </span>
+
+              {/* Treść */}
+              <div className="relative z-10">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-heading text-5xl text-accent">
+                    {festival.edition}
+                  </span>
+                  <span className="text-sm font-bold text-ink-inverse opacity-80 leading-tight">
+                    Festiwal
+                    <br />
+                    Modelarski
+                  </span>
+                </div>
+                <div className="mt-3 font-bold text-ink-inverse">
+                  {festival.city} {festival.year}
+                </div>
+                <div className="mt-2 text-sm text-ink-inverse/70 flex items-center gap-2">
+                  📅{" "}
+                  {formatDateRange(
+                    festival.festival_start,
+                    festival.festival_end,
+                  )}
+                  <span className="opacity-40">·</span>
+                  📍 {festival.location ?? festival.city}
+                </div>
+                <hr className="mt-4 border-white/15" />
+                <div className="mt-3 text-xs font-bold tracking-widest uppercase text-accent">
+                  Rocznicowe tematy tej edycji ↓
+                </div>
               </div>
-              <div className="mt-1 text-sm text-ink-inverse opacity-60">
-                {formatDateRange(festival.festival_start, festival.festival_end)}
-              </div>
-              <hr className="mt-4 border-white/15" />
-              <div className="mt-3 text-xs font-bold tracking-widest uppercase text-accent">
-                Rocznicowe tematy tej edycji ↓
-              </div>
-            </div>
+            </NavLink>
             {topics.map((topic) => (
               <div
                 key={topic.id}
@@ -70,7 +94,6 @@ export default function Hero({ festival, topics }: HeroProps) {
                 </div>
               </div>
             ))}
-
           </div>
         </div>
       </div>

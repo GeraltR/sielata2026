@@ -3,6 +3,7 @@ export interface Festival {
     edition: string;
     title: string;
     city: string;
+    location: string;
     year: number;
     registration_start: string;
     registration_end: string;

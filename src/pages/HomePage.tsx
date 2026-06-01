@@ -7,7 +7,7 @@ import { useSponsors } from "../hooks/useSponsors";
 import MainLayout from "../layouts/MainLayout";
 import HeroSponsorsMarquee from "../components/Hero/HeroSponsorsMarquee";
 import FestivalStrip from "../components/Festival/FestivalStrip";
-import QuickBar from "../components/Home/QuicBar";
+import QuickBar from "../components/QuickBar/QuickBar";
 
 export default function HomePage() {
   const { festival, loading: festivalLoading } = useFestival();
