@@ -8,6 +8,9 @@ import MainLayout from "../layouts/MainLayout";
 import HeroSponsorsMarquee from "../components/Hero/HeroSponsorsMarquee";
 import FestivalStrip from "../components/Festival/FestivalStrip";
 import QuickBar from "../components/QuickBar/QuickBar";
+import Footer from "../components/Footer/Footer";
+import RodoSection from "../components/RODO/RodoSection";
+import ContactSection from "../components/Contatct/ContactSection";
 
 export default function HomePage() {
   const { festival, loading: festivalLoading } = useFestival();
@@ -32,7 +35,13 @@ export default function HomePage() {
 
       <QuickBar festival={festival} />
 
-      <Sponsors sponsors={sponsors} />
+      <Sponsors sponsors={sponsors} festival={festival} />
+
+      <ContactSection />
+
+      <RodoSection />
+
+      <Footer festival={festival} />
     </MainLayout>
   );
 }

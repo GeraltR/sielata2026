@@ -1,4 +1,3 @@
-import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 
 type MainLayoutProps = {
@@ -13,8 +12,6 @@ export default function MainLayout({ children }: MainLayoutProps) {
             <main className="flex-1">
                 {children}
             </main>
-
-            <Footer />
         </div>
     );
 }
