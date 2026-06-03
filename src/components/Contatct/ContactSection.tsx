@@ -22,6 +22,8 @@ export default function ContactSection() {
     message: "",
   });
   const [status, setStatus] = useState<Status>(null);
+  const [visible, setVisible] = useState(false);
+  const [opacity, setOpacity] = useState(0);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -60,6 +62,13 @@ export default function ContactSection() {
       if (!res.ok) throw new Error();
       setStatus("ok");
       setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+      setVisible(true);
+      setTimeout(() => setOpacity(1), 50);
+      setTimeout(() => setOpacity(0), 4000);
+      setTimeout(() => {
+        setVisible(false);
+        setStatus(null);
+      }, 5000);
     } catch {
       setStatus("error");
     }
@@ -162,18 +171,28 @@ export default function ContactSection() {
             >
               {status === "sending" ? "⏳ Wysyłanie…" : "Wyślij wiadomość →"}
             </button>
-
-            {status === "ok" && (
-              <p className="text-sm font-bold text-navy">
-                ✅ Wiadomość wysłana! Odpiszemy wkrótce.
-              </p>
-            )}
-            {status === "error" && (
-              <p className="text-sm font-bold text-red-600">
-                ❌ Błąd wysyłania. Spróbuj ponownie.
-              </p>
-            )}
           </form>
+          {visible && (
+            <div
+              style={{ opacity, transition: "opacity 1s ease" }}
+              className="fixed inset-0 z-50 flex items-center justify-center"
+            >
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black/50" />
+
+              {/* Komunikat */}
+              <div className="relative z-10 bg-surface rounded-2xl px-10 py-8 max-w-md mx-4 text-center shadow-2xl">
+                <div className="text-4xl mb-4">✉️</div>
+                <h3 className="font-heading text-xl font-bold text-ink mb-2">
+                  Wiadomość wysłana!
+                </h3>
+                <p className="text-ink-muted text-sm leading-relaxed">
+                  Twój list został wysłany, odpowiemy tak szybko jak będzie to
+                  możliwe.
+                </p>
+              </div>
+            </div>
+          )}
           {/* Prawa kolumna */}
           <div className="flex flex-col gap-6">
             {/* Festiwal link */}

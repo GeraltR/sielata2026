@@ -4,10 +4,18 @@ import type { Festival } from "../../types/Festival";
 import type { FestivalTopic } from "../../types/FestivalTopic";
 import { formatDateRange } from "../../utils/date";
 import Badge from "../Common/Badge";
+import { storageUrl } from "../../utils/storage";
 
 type HeroProps = {
   festival: Festival;
   topics: FestivalTopic[];
+};
+
+const fadeClass: Record<string, string> = {
+  none:   'hidden',
+  short:  'bg-gradient-to-r from-surface via-surface/10 to-transparent',
+  medium: 'bg-gradient-to-r from-surface via-surface/40 to-transparent',
+  long:   'bg-gradient-to-r from-surface via-surface/80 to-transparent',
 };
 
 export default function Hero({ festival, topics }: HeroProps) {
@@ -31,7 +39,8 @@ export default function Hero({ festival, topics }: HeroProps) {
             </p>
           </div>
           <div className="space-y-3">
-            <NavLink to="/festiwal"
+            <NavLink
+              to="/festiwal"
               className="relative overflow-hidden bg-navy rounded-2xl p-6 block hover:bg-navy-dark transition-colors"
             >
               {/* Watermark */}
@@ -69,31 +78,57 @@ export default function Hero({ festival, topics }: HeroProps) {
                 </div>
               </div>
             </NavLink>
-            {topics.map((topic) => (
-              <div
-                key={topic.id}
-                className="bg-surface rounded-xl border border-border p-4 flex items-center gap-4 hover:border-accent transition-colors"
-              >
-                <div className="text-center min-w-[64px] shrink-0">
-                  <div className="font-heading text-3xl text-accent leading-none">
-                    {topic.anniversary_value}
-                  </div>
-                  <div className="text-[10px] font-bold text-ink-muted uppercase tracking-wide mt-1">
-                    {topic.anniversary_period}
-                  </div>
-                </div>
-                <div>
-                  <div className="font-bold text-sm text-ink">
-                    {topic.title}
-                  </div>
-                  {topic.subtitle && (
-                    <div className="text-xs text-ink-muted mt-0.5">
-                      {topic.subtitle}
+
+            {topics.map((topic) => {
+              const img = storageUrl(topic.image);
+              return (
+                <div
+                  key={topic.id}
+                  className="relative overflow-hidden bg-surface rounded-xl border border-border hover:border-accent transition-colors"
+                >
+                  {/* Obrazek po prawej */}
+                  {img && (
+                    <div
+                      className="absolute right-0 top-0 bottom-0 w-1/2"
+                      style={{
+                        backgroundImage: `url(${img})`,
+                        backgroundSize:
+                          topic.image_position === "contain"
+                            ? "contain"
+                            : "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                        backgroundColor: "white",
+                      }}
+                    >
+                      <div className={`absolute inset-0 ${fadeClass[topic.fade_width ?? 'hidden']}`} />
                     </div>
                   )}
+
+                  {/* Treść */}
+                  <div className="relative z-10 p-4 flex items-center gap-4">
+                    <div className="text-center min-w-[64px] shrink-0">
+                      <div className="font-heading text-3xl text-accent leading-none">
+                        {topic.anniversary_value}
+                      </div>
+                      <div className="text-[10px] font-bold text-ink-muted uppercase tracking-wide mt-1">
+                        {topic.anniversary_period}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="font-bold text-sm text-ink">
+                        {topic.title}
+                      </div>
+                      {topic.subtitle && (
+                        <div className="text-xs text-ink-muted mt-0.5">
+                          {topic.subtitle}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

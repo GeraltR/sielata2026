@@ -11,6 +11,7 @@ import QuickBar from "../components/QuickBar/QuickBar";
 import Footer from "../components/Footer/Footer";
 import RodoSection from "../components/RODO/RodoSection";
 import ContactSection from "../components/Contatct/ContactSection";
+import AboutSection from "../components/Common/About/AboutSection";
 
 export default function HomePage() {
   const { festival, loading: festivalLoading } = useFestival();
@@ -36,6 +37,8 @@ export default function HomePage() {
       <QuickBar festival={festival} />
 
       <Sponsors sponsors={sponsors} festival={festival} />
+
+      <AboutSection festival={festival} />
 
       <ContactSection />
 
