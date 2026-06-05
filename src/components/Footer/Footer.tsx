@@ -61,9 +61,9 @@ export default function Footer({ festival }: Props) {
             </h4>
             <ul className="flex flex-col gap-2 text-sm">
               <li>
-                <NavLink to="/" className="hover:text-accent transition-colors">
+                <a href="/" className="hover:text-accent transition-colors">
                   Start
-                </NavLink>
+                </a>
               </li>
               <li>
                 <NavLink
