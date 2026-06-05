@@ -7,7 +7,7 @@ export default function ContactTile() {
       iconBg="bg-blue-50"
       title="Kontakt"
       description="Napisz do organizatorów"
-      href="#kontakt"
+      href="/#kontakt"
     />
   );
 }

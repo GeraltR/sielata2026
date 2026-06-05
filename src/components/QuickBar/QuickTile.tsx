@@ -26,9 +26,13 @@ export default function QuickTile({ icon, iconBg = "bg-accent-light", title, des
     </>
   );
 
-  if (external) {
-    return <a href={href} target="_blank" rel="noreferrer" className={className}>{inner}</a>;
-  }
+if (external) {
+  return <a href={href} target="_blank" rel="noreferrer" className={className}>{inner}</a>;
+}
 
-  return <NavLink to={href} className={className}>{inner}</NavLink>;
+if (href.startsWith('/#')) {
+  return <a href={href} className={className}>{inner}</a>;
+}
+
+return <NavLink to={href} className={className}>{inner}</NavLink>;
 }

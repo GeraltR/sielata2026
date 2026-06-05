@@ -35,7 +35,7 @@ export default function Header() {
           <NavLink to="/pogoda" className={navLinkClass}>
             Pogoda
           </NavLink>
-          <NavLink to="/kontakt" className={navLinkClass}>
+          <NavLink to="/#kontakt" className={navLinkClass}>
             Kontakt
           </NavLink>
         </nav>
@@ -101,7 +101,7 @@ export default function Header() {
           <NavLink to="/pogoda" className={navLinkClass} onClick={close}>
             Pogoda
           </NavLink>
-          <NavLink to="/kontakt" className={navLinkClass} onClick={close}>
+          <NavLink to="/#kontakt" className={navLinkClass} onClick={close}>
             Kontakt
           </NavLink>
           <div className="flex gap-3 pt-2 border-t border-border">
