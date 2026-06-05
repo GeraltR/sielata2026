@@ -7,13 +7,15 @@ export default function HeroSponsorsMarquee({ sponsors }: Props) {
 
   const doubled = [...withLogos, ...withLogos];
 
+  const duration = Math.min(20, withLogos.length * 1.2);
+
   return (
     <section className="bg-background py-6 overflow-hidden border-y border-border">
       <p className="text-center text-xs font-bold uppercase tracking-widest text-ink-muted mb-4">
         Patroni i Sponsorzy Festiwalu
       </p>
       <div className="flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-        <div className="marquee-track">
+        <div className="marquee-track" style={{ animationDuration: `${duration}s` }}>
           {doubled.map((sponsor, index) => (
             <a
               key={`${sponsor.id}-${index}`}

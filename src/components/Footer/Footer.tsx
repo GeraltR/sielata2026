@@ -109,3 +109,10 @@ export default function Footer({ festival }: Props) {
     </footer>
   );
 }
+
+{/* <a href="https://api.sielata.com.pl/public/sielata-panel"
+   target="_blank"
+   rel="noreferrer"
+   className="text-xs text-ink-inverse/20 hover:text-ink-inverse/60 transition-colors">
+  Panel
+</a> */}

@@ -16,7 +16,7 @@ import AboutSection from "../components/Common/About/AboutSection";
 export default function HomePage() {
   const { festival, loading: festivalLoading } = useFestival();
   const { topics, loading: topicsLoading } = useTopics();
-  const { sponsors, loading: sponsorsLoading } = useSponsors();
+  const { sponsors } = useSponsors();
 
   if (festivalLoading || topicsLoading) {
     return <div>Ładowanie...</div>;
