@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import logo from "../assets/sielata_logo_53w.gif";
 import LoadingSpinner from "../components/Common/LoadingSpinner/LoadingSpinner";
 
 export default function FestivalPage() {
