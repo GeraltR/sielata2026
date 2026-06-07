@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { SITE_DESCRIPTION } from "../../config/site";
 import type { Festival } from "../../types/Festival";
 import type { FestivalTopic } from "../../types/FestivalTopic";
@@ -9,16 +9,20 @@ import { storageUrl } from "../../utils/storage";
 type HeroProps = {
   festival: Festival;
   topics: FestivalTopic[];
+  onOpenRules: () => void;
 };
 
 const fadeClass: Record<string, string> = {
-  none:   'hidden',
-  short:  'bg-gradient-to-r from-surface via-surface/10 to-transparent',
-  medium: 'bg-gradient-to-r from-surface via-surface/40 to-transparent',
-  long:   'bg-gradient-to-r from-surface via-surface/80 to-transparent',
+  none: "hidden",
+  short: "bg-gradient-to-r from-surface via-surface/10 to-transparent",
+  medium: "bg-gradient-to-r from-surface via-surface/40 to-transparent",
+  long: "bg-gradient-to-r from-surface via-surface/80 to-transparent",
 };
 
-export default function Hero({ festival, topics }: HeroProps) {
+
+export default function Hero({ festival, topics, onOpenRules }: HeroProps) {
+  const navigate = useNavigate();
+  
   return (
     <section className="bg-background">
       <div className="max-w-7xl mx-auto px-6 py-16">
@@ -39,9 +43,9 @@ export default function Hero({ festival, topics }: HeroProps) {
             </p>
           </div>
           <div className="space-y-3">
-            <NavLink
-              to="/festiwal"
-              className="relative overflow-hidden bg-navy rounded-2xl p-6 block hover:bg-navy-dark transition-colors"
+            <div
+              onClick={() => navigate("/festiwal")}
+              className="relative overflow-hidden bg-navy rounded-2xl p-6 block hover:bg-navy-dark transition-colors cursor-pointer"
             >
               {/* Watermark */}
               <span className="absolute right-4 top-1/2 -translate-y-1/2 font-heading text-9xl font-black text-white/5 select-none leading-none pointer-events-none">
@@ -74,10 +78,18 @@ export default function Hero({ festival, topics }: HeroProps) {
                 </div>
                 <hr className="mt-4 border-white/15" />
                 <div className="mt-3 text-xs font-bold tracking-widest uppercase text-accent">
-                  Rocznicowe tematy tej edycji ↓
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onOpenRules();
+                    }}
+                    className="text-accent font-semibold hover:underline"
+                  >
+                    Czytaj regulamin →
+                  </button>
                 </div>
               </div>
-            </NavLink>
+            </div>
 
             {topics.map((topic) => {
               const img = storageUrl(topic.image);
@@ -101,7 +113,9 @@ export default function Hero({ festival, topics }: HeroProps) {
                         backgroundColor: "white",
                       }}
                     >
-                      <div className={`absolute inset-0 ${fadeClass[topic.fade_width ?? 'hidden']}`} />
+                      <div
+                        className={`absolute inset-0 ${fadeClass[topic.fade_width ?? "hidden"]}`}
+                      />
                     </div>
                   )}
 

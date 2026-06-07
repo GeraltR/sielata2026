@@ -6,9 +6,14 @@ import { storageUrl } from "../../../utils/storage";
 type Props = {
   festival: Festival;
   topics: FestivalTopic[];
+  onOpenRules: () => void;
 };
 
-export default function ThemesSection({ festival, topics }: Props) {
+export default function ThemesSection({
+  festival,
+  topics,
+  onOpenRules,
+}: Props) {
   return (
     <section className="py-16 bg-background" id="tematyka">
       <div className="max-w-7xl mx-auto px-6">
@@ -37,11 +42,12 @@ export default function ThemesSection({ festival, topics }: Props) {
                 <span className="mx-2 opacity-40">·</span>
                 📍 {festival.location ?? festival.city}
               </div>
-              <p className="text-sm text-ink-inverse/60 max-w-lg">
-                Rocznicowe motywy tej edycji — historyczne tematy, wokół których
-                budowane są modele i przyznawane są najważniejsze nagrody
-                festiwalu.
-              </p>
+              <button
+                onClick={onOpenRules}
+                className="text-accent font-semibold hover:underline"
+              >
+                Czytaj regulamin →
+              </button>
             </div>
           </div>
 

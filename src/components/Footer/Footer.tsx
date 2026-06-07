@@ -3,9 +3,9 @@ import logo from "../../assets/sielata_logo_53w.gif";
 import type { Festival } from "../../types/Festival";
 import { formatDateRange } from "../../utils/date";
 
-type Props = { festival: Festival };
+type Props = { festival: Festival; onOpenRules: () => void; };
 
-export default function Footer({ festival }: Props) {
+export default function Footer({ festival, onOpenRules }: Props) {
   const year = new Date().getFullYear();
 
   return (
@@ -180,6 +180,14 @@ export default function Footer({ festival }: Props) {
                 </a>
               </li>
               <li>🏆 {festival.edition} edycja</li>
+              <li>
+                <button
+                  onClick={onOpenRules}
+                  className="hover:text-accent transition-colors text-left"
+                >
+                  📋 Regulamin
+                </button>
+              </li>
             </ul>
           </div>
         </div>

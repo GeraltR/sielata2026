@@ -13,23 +13,39 @@ import RodoSection from "../components/RODO/RodoSection";
 import ContactSection from "../components/Contatct/ContactSection";
 import AboutSection from "../components/Common/About/AboutSection";
 import ThemesSection from "../components/Common/Theme/ThemeSection";
+import { useState } from "react";
+import RulesModal from "./RulesModal";
+import LoadingSpinner from "../components/Common/LoadingSpinner/LoadingSpinner";
 
 export default function HomePage() {
   const { festival, loading: festivalLoading } = useFestival();
   const { topics, loading: topicsLoading } = useTopics();
   const { sponsors } = useSponsors();
+  const [rulesOpen, setRulesOpen] = useState(false);
 
   if (festivalLoading || topicsLoading) {
-    return <div>Ładowanie...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <LoadingSpinner label="Ładowanie…" />
+      </div>
+    );
   }
 
   if (!festival) {
-    return <div>Brak aktywnej edycji festiwalu.</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <p className="text-ink-muted text-sm">
+          Brak aktywnej edycji festiwalu.
+        </p>
+      </div>
+    );
   }
+
+  const openRules = () => setRulesOpen(true);
 
   return (
     <MainLayout>
-      <Hero festival={festival} topics={topics} />
+      <Hero festival={festival} topics={topics} onOpenRules={openRules} />
 
       <HeroSponsorsMarquee sponsors={sponsors} />
 
@@ -39,7 +55,11 @@ export default function HomePage() {
 
       <Sponsors sponsors={sponsors} festival={festival} />
 
-      <ThemesSection festival={festival} topics={topics} />
+      <ThemesSection
+        festival={festival}
+        topics={topics}
+        onOpenRules={openRules}
+      />
 
       <AboutSection festival={festival} />
 
@@ -47,7 +67,9 @@ export default function HomePage() {
 
       <RodoSection />
 
-      <Footer festival={festival} />
+      <Footer festival={festival} onOpenRules={openRules} />
+
+      <RulesModal isOpen={rulesOpen} onClose={() => setRulesOpen(false)} />
     </MainLayout>
   );
 }
