@@ -26,13 +26,13 @@ export default function Header() {
         <nav className="hidden md:flex items-center gap-6">
           <a href="/" className={linkClass("/")}>Start</a>
           <a href="https://festiwal.sielata.com.pl" target="_blank" rel="noreferrer" className={linkClass("/festiwal")}>Festiwal</a>
-          <a href="/pogoda" className={linkClass("/pogoda")}>Pogoda</a>
+          <a href="https://pogoda.sielata.com.pl" target="_blank" rel="noreferrer" className={linkClass("/pogoda")}>Pogoda</a>
           <a href="/#kontakt" className={linkClass("/kontakt")}>Kontakt</a>
         </nav>
 
         {/* Przyciski desktop */}
         <div className="hidden md:flex items-center gap-3">
-          <a href="/pogoda"
+          <a href="https://pogoda.sielata.com.pl" target="_blank" rel="noreferrer"
             className="text-sm font-bold text-link border border-border
                        px-4 py-2 rounded-lg hover:border-accent hover:text-accent
                        transition-colors">
@@ -69,10 +69,10 @@ export default function Header() {
         <nav className="md:hidden bg-surface border-t border-border px-6 py-4 flex flex-col gap-4">
           <a href="/" className={linkClass("/")} onClick={close}>Start</a>
           <a href="https://festiwal.sielata.com.pl" target="_blank" rel="noreferrer" className={linkClass("/festiwal")} onClick={close}>Festiwal</a>
-          <a href="/pogoda" className={linkClass("/pogoda")} onClick={close}>Pogoda</a>
+          <a href="https://pogoda.sielata.com.pl" target="_blank" rel="noreferrer" className={linkClass("/pogoda")} onClick={close}>Pogoda</a>
           <a href="/#kontakt" className={linkClass("/kontakt")} onClick={close}>Kontakt</a>
           <div className="flex gap-3 pt-2 border-t border-border">
-            <a href="/pogoda" onClick={close}
+            <a href="https://pogoda.sielata.com.pl" target="_blank" rel="noreferrer" onClick={close}
               className="flex-1 text-center text-sm font-bold text-link border border-border
                          px-4 py-2 rounded-lg hover:border-accent hover:text-accent transition-colors">
               🌤 Pogoda
