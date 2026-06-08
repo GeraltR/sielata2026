@@ -25,7 +25,7 @@ export default function Header() {
         {/* Nawigacja desktop */}
         <nav className="hidden md:flex items-center gap-6">
           <a href="/" className={linkClass("/")}>Start</a>
-          <a href="/festiwal" className={linkClass("/festiwal")}>Festiwal</a>
+          <a href="https://festiwal.sielata.com.pl" target="_blank" rel="noreferrer" className={linkClass("/festiwal")}>Festiwal</a>
           <a href="/pogoda" className={linkClass("/pogoda")}>Pogoda</a>
           <a href="/#kontakt" className={linkClass("/kontakt")}>Kontakt</a>
         </nav>
@@ -38,7 +38,7 @@ export default function Header() {
                        transition-colors">
             🌤 Pogoda
           </a>
-          <a href="/festiwal"
+          <a href="https://festiwal.sielata.com.pl" target="_blank" rel="noreferrer"
             className="text-sm font-bold text-ink-inverse bg-navy
                        px-4 py-2 rounded-lg hover:bg-navy-dark transition-colors">
             🏆 Festiwal
@@ -68,7 +68,7 @@ export default function Header() {
       {isOpen && (
         <nav className="md:hidden bg-surface border-t border-border px-6 py-4 flex flex-col gap-4">
           <a href="/" className={linkClass("/")} onClick={close}>Start</a>
-          <a href="/festiwal" className={linkClass("/festiwal")} onClick={close}>Festiwal</a>
+          <a href="https://festiwal.sielata.com.pl" target="_blank" rel="noreferrer" className={linkClass("/festiwal")} onClick={close}>Festiwal</a>
           <a href="/pogoda" className={linkClass("/pogoda")} onClick={close}>Pogoda</a>
           <a href="/#kontakt" className={linkClass("/kontakt")} onClick={close}>Kontakt</a>
           <div className="flex gap-3 pt-2 border-t border-border">
@@ -77,7 +77,7 @@ export default function Header() {
                          px-4 py-2 rounded-lg hover:border-accent hover:text-accent transition-colors">
               🌤 Pogoda
             </a>
-            <a href="/festiwal" onClick={close}
+            <a href="https://festiwal.sielata.com.pl" target="_blank" rel="noreferrer" onClick={close}
               className="flex-1 text-center text-sm font-bold text-ink-inverse bg-navy
                          px-4 py-2 rounded-lg hover:bg-navy-dark transition-colors">
               🏆 Festiwal
