@@ -25,7 +25,7 @@ export default function DynamicTile({ festival }: Props) {
       iconBg="bg-navy-light"
       title="Rejestracja"
       description={`Zgłoś model na ${festival.edition} edycję zawodów`}
-      href="https://festiwal.sielata.com.pl/register"
+      href="https://festiwal.sielata.com.pl"
       external
     />
   );

@@ -1,5 +1,3 @@
-import { NavLink } from "react-router-dom";
-
 type Props = {
   icon: string;
   iconBg?: string;
@@ -31,8 +29,12 @@ if (external) {
 }
 
 if (href.startsWith('/#')) {
-  return <a href={href} className={className}>{inner}</a>;
+  return <a href={href} className={className}>
+    {inner}
+  </a>;
 }
 
-return <NavLink to={href} className={className}>{inner}</NavLink>;
+return <a href={href} className={className} target="_blank" rel="noreferrer">
+  {inner}
+</a>;
 }

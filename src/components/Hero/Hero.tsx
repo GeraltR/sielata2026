@@ -96,7 +96,7 @@ export default function Hero({ festival, topics, onOpenRules }: HeroProps) {
               return (
                 <div
                   key={topic.id}
-                  className="relative overflow-hidden bg-surface rounded-xl border border-border hover:border-accent transition-colors"
+                  className="relative overflow-hidden bg-surface rounded-xl border border-border transition-colors"
                 >
                   {/* Obrazek po prawej */}
                   {img && (
@@ -121,11 +121,11 @@ export default function Hero({ festival, topics, onOpenRules }: HeroProps) {
 
                   {/* Treść */}
                   <div className="relative z-10 p-4 flex items-center gap-4">
-                    <div className="text-center min-w-[64px] shrink-0">
+                    <div className="text-left mx-3 min-w-[64px] shrink-0">
                       <div className="font-heading text-3xl text-accent leading-none">
                         {topic.anniversary_value}
                       </div>
-                      <div className="text-[10px] font-bold text-ink-muted uppercase tracking-wide mt-1">
+                      <div className="text-[10px] font-bold text-ink-muted uppercase tracking-wide mt-1 text-left ">
                         {topic.anniversary_period}
                       </div>
                     </div>
