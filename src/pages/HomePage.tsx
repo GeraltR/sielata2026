@@ -13,6 +13,7 @@ import RodoSection from "../components/RODO/RodoSection";
 import ContactSection from "../components/Contatct/ContactSection";
 import AboutSection from "../components/Common/About/AboutSection";
 import ThemesSection from "../components/Common/Theme/ThemeSection";
+import ResultsSection from "../components/Common/Results/ResultsSection";
 import { useState } from "react";
 import RulesModal from "./RulesModal";
 import LoadingSpinner from "../components/Common/LoadingSpinner/LoadingSpinner";
@@ -60,6 +61,8 @@ export default function HomePage() {
         topics={topics}
         onOpenRules={openRules}
       />
+
+      <ResultsSection festival={festival} />
 
       <AboutSection festival={festival} />
 
