@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function RulesModal({ isOpen, onClose }: Props) {
-  const { rules, loading } = useRules();
+  const { rules, loading } = useRules(isOpen);
 
   return (
     <Modal
