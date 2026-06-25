@@ -21,3 +21,22 @@
 .marquee-track:hover {
   animation-play-state: paused;
 }
+
+@page {
+  size: A4;
+  margin: 20mm;
+}
+
+@media print {
+  body {
+    overflow: visible !important;
+  }
+
+  #root {
+    display: none !important;
+  }
+
+  .grecaptcha-badge {
+    display: none !important;
+  }
+}

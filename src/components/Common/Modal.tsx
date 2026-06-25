@@ -1,4 +1,5 @@
 import { useEffect, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 
 interface ModalProps {
   isOpen: boolean;
@@ -22,17 +23,17 @@ export default function Modal({ isOpen, onClose, title, printable = false, child
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 backdrop-blur-sm p-4 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 backdrop-blur-sm p-4 overflow-y-auto print:static print:block print:bg-transparent print:backdrop-blur-none print:p-0 print:overflow-visible"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-3xl my-8 bg-surface rounded-2xl shadow-2xl"
+        className="relative w-full max-w-3xl my-8 bg-surface rounded-2xl shadow-2xl print:max-w-none print:my-0 print:shadow-none print:rounded-none"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-8 pt-8 pb-4">
+        <div className="flex items-center justify-between px-8 pt-8 pb-4 print:hidden">
           {title && (
             <h2 className="font-heading text-2xl font-bold text-ink">{title}</h2>
           )}
@@ -58,10 +59,11 @@ export default function Modal({ isOpen, onClose, title, printable = false, child
         </div>
 
         {/* Content */}
-        <div className="px-8 pb-10">
+        <div className="px-8 pb-10 print:px-0 print:pb-0">
           {children}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
