@@ -3,7 +3,7 @@ import logo from "../../assets/sielata_logo_53w.gif";
 import type { Festival } from "../../types/Festival";
 import { formatDateRange } from "../../utils/date";
 
-type Props = { festival: Festival; onOpenRules: () => void; };
+type Props = { festival: Festival; onOpenRules: () => void };
 
 export default function Footer({ festival, onOpenRules }: Props) {
   const year = new Date().getFullYear();
@@ -144,7 +144,7 @@ export default function Footer({ festival, onOpenRules }: Props) {
               </li>
               <li>
                 <a
-                  href="https://api.sielata.com.pl/public/atc"
+                  href="https://api.sielata.com.pl/atc"
                   target="_blank"
                   rel="noreferrer"
                   className="hover:text-accent transition-colors"
