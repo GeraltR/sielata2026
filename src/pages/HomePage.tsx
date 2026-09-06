@@ -2,6 +2,7 @@ import Hero from "../components/Hero/Hero";
 import Sponsors from "../components/Sponsors/Sponsors";
 
 import { useFestival } from "../hooks/useFestival";
+import { useFestivalLifecycle } from "../hooks/useFestivalLifecycle";
 import { useTopics } from "../hooks/useTopics";
 import { useSponsors } from "../hooks/useSponsors";
 import MainLayout from "../layouts/MainLayout";
@@ -20,6 +21,7 @@ import LoadingSpinner from "../components/Common/LoadingSpinner/LoadingSpinner";
 
 export default function HomePage() {
   const { festival, loading: festivalLoading } = useFestival();
+  useFestivalLifecycle(festival);
   const { topics, loading: topicsLoading } = useTopics();
   const { sponsors } = useSponsors();
   const [rulesOpen, setRulesOpen] = useState(false);
