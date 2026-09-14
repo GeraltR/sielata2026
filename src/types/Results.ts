@@ -9,6 +9,7 @@ export interface RewardModel {
   categoryName: string;
   symbol: string;
   klasa: "P" | "K";
+  grupa: string;
   place: string;
   imie: string;
   nazwisko: string;

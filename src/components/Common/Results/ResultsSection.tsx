@@ -3,10 +3,41 @@ import type { GrandPrixe, RewardModel } from "../../../types/Results";
 import { useResults } from "../../../hooks/useResults";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
-const PLACE_ICONS: Record<string, string> = { "1": "🥇", "2": "🥈", "3": "🥉" };
+const PLACE_ORDER: Record<string, number> = { pierwsze: 1, drugie: 2, trzecie: 3, wyróżnienie: 4 };
+const PLACE_COLOR: Record<string, string> = {
+  pierwsze: "text-yellow-600",
+  drugie: "text-gray-400",
+  trzecie: "text-amber-700",
+};
 
-function placeIcon(place: string) {
-  return PLACE_ICONS[place] ?? "✦";
+function placeColor(place: string) {
+  return PLACE_COLOR[place] ?? "text-sky-600";
+}
+
+function PlaceMarker({ place }: { place: string }) {
+  if (PLACE_COLOR[place]) {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        width="22"
+        height="22"
+        fill="currentColor"
+        className={placeColor(place)}
+      >
+        <path d="M17 10.43V2H7v8.43c0 .35.18.68.49.86l4.18 2.51-.99 2.34-3.41.29 2.59 2.24L9.07 22 12 20.23 14.93 22l-.78-3.33 2.59-2.24-3.41-.29-.99-2.34 4.18-2.51c.3-.18.48-.5.48-.86m-4 1.8-1 .6-1-.6V3h2z" />
+      </svg>
+    );
+  }
+  return <span className={`text-lg leading-none ${placeColor(place)}`}>✦</span>;
+}
+
+function sortByPlaceThenName(a: RewardModel, b: RewardModel) {
+  const placeDiff = (PLACE_ORDER[a.place] ?? 99) - (PLACE_ORDER[b.place] ?? 99);
+  if (placeDiff !== 0) return placeDiff;
+  return (
+    (a.nazwisko || "").localeCompare(b.nazwisko || "", "pl") ||
+    (a.imie || "").localeCompare(b.imie || "", "pl")
+  );
 }
 
 function GrandPrixGroup({ name, items }: { name: string; items: GrandPrixe[] }) {
@@ -39,7 +70,9 @@ function RewardGroup({ label, items }: { label: string; items: RewardModel[] }) 
           key={i}
           className={`grid grid-cols-[auto_1fr_1fr] gap-x-3 px-4 py-2 text-sm items-center ${i % 2 ? "bg-accent-light" : "bg-surface"} border-t border-border`}
         >
-          <span className="text-lg w-7 text-center">{placeIcon(user.place)}</span>
+          <span className="w-7 flex items-center justify-center">
+            <PlaceMarker place={user.place} />
+          </span>
           <span className="font-semibold text-ink">{user.imie} {user.nazwisko}</span>
           <span className="text-ink-muted truncate">{user.nazwa}</span>
         </div>
@@ -72,13 +105,24 @@ export default function ResultsSection({ festival }: Props) {
     return acc;
   }, {});
 
-  const rwGroups = rewards.reduce<Record<string, { label: string; items: RewardModel[] }>>((acc, r) => {
+  const rwGroups = rewards.reduce<Record<string, { label: string; grupa: string; items: RewardModel[] }>>((acc, r) => {
     const material = r.klasa === "P" ? "Plastik" : "Karton";
     const key = `${r.klasa}|${r.symbol}|${r.categoryName}`;
-    if (!acc[key]) acc[key] = { label: `[${material}] ${r.symbol} ${r.categoryName}`, items: [] };
+    if (!acc[key]) {
+      acc[key] = {
+        label: `[${material}] ${r.symbol} ${r.categoryName}`,
+        grupa: r.grupa ?? key,
+        items: [],
+      };
+    }
     acc[key].items.push(r);
     return acc;
   }, {});
+
+  const sortedRwGroups = Object.entries(rwGroups).sort(([, a], [, b]) =>
+    (a.grupa || "").localeCompare(b.grupa || "", "pl")
+  );
+  sortedRwGroups.forEach(([, group]) => group.items.sort(sortByPlaceThenName));
 
   return (
     <section className="py-16 bg-background" id="wyniki">
@@ -109,7 +153,7 @@ export default function ResultsSection({ festival }: Props) {
               🎖 Wyniki kategorii
             </h3>
             <div className="flex flex-col gap-4">
-              {Object.entries(rwGroups).map(([key, { label, items }]) => (
+              {sortedRwGroups.map(([key, { label, items }]) => (
                 <RewardGroup key={key} label={label} items={items} />
               ))}
             </div>
