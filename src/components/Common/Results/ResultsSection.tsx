@@ -52,7 +52,7 @@ function GrandPrixGroup({ name, items }: { name: string; items: GrandPrixe[] }) 
           className={`grid grid-cols-2 gap-3 px-4 py-2 text-sm ${i % 2 ? "bg-accent-light" : "bg-surface"} border-t border-border`}
         >
           <span className="font-semibold text-ink">{prixe.imie} {prixe.nazwisko}</span>
-          <span className="text-ink-muted">{prixe.modelName}</span>
+          <span className="text-[#374151]">{prixe.modelName}</span>
         </div>
       ))}
     </div>
@@ -74,7 +74,7 @@ function RewardGroup({ label, items }: { label: string; items: RewardModel[] }) 
             <PlaceMarker place={user.place} />
           </span>
           <span className="font-semibold text-ink">{user.imie} {user.nazwisko}</span>
-          <span className="text-ink-muted truncate">{user.nazwa}</span>
+          <span className="text-[#374151] truncate">{user.nazwa}</span>
         </div>
       ))}
     </div>
